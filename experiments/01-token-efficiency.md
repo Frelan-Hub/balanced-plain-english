@@ -1,7 +1,19 @@
 # Experiment 01 — Token Efficiency
 
-**Status:** not run.
-**Priority:** highest. This closes the largest gap in the evidence.
+**Status: RUN.** Executed as the
+[v2 Token Efficiency Benchmark](../evidence/claude/benchmark-v2/README.md) on Claude Opus 5.
+
+**Result:** 50.45% aggregate output-token reduction across 20 paired scenarios, 19/20 runs positive,
+no material quality difference detected, 40/40 task completions. The pre-registered success
+condition was met; the failure condition was not triggered.
+
+This document is preserved as the **pre-registration**. It was written before the benchmark ran and
+is not edited to match what happened — that is the point of writing it first. Deviations between what
+it specified and what was delivered are recorded in
+[Deviations](#deviations-from-this-protocol-as-executed) below and in the
+[benchmark report](../evidence/claude/benchmark-v2/README.md#deviations-from-the-pre-registered-protocol).
+
+---
 
 ## Question
 
@@ -127,3 +139,43 @@ comparison looks favorable.
 
 Report input, output, and total separately for this reason. Total tokens is the honest headline
 number for single-turn tasks.
+
+---
+
+## Deviations from this protocol, as executed
+
+Recorded rather than quietly dropped. The benchmark met some pre-registered requirements and missed
+others.
+
+| This protocol required | v2 delivered | Effect |
+|---|---|---|
+| Minimum 5 runs per condition per scenario | 1 | Run variance not separated from treatment effect |
+| At least 15 scenarios, more than one domain | 20 scenarios, 20 domains | **Met**, exceeded on breadth |
+| Quality scored blind to condition | Intended; did not hold in any pair | Quality result substantially weakened |
+| Verbatim prompt text recorded | Met | — |
+| Token counts from the platform, not estimated | Met — JSONL telemetry | — |
+| Report input, output, and total separately | Output only | No total-cost claim possible |
+| Report distribution, not only the mean | Met — mean, median, range, per-run table | — |
+| Quality gate before token comparison | Met — 40/40 completions, no PARTIAL or FAIL | — |
+| Fixed success/failure conditions applied unchanged | Met | — |
+
+The input-token requirement could not be met: the telemetry records `input_tokens: 2` on every run
+because real input arrives through the prompt cache. This is a platform measurement limitation, not
+an omission by the benchmark.
+
+The blinding failure is the significant one. This protocol called blinding the fix for "the largest
+bias in the existing evidence," and it did not hold — the benchmark runs were told their own
+condition and echoed it into their response headers. Any repeat must strip condition markers from
+responses before evaluation.
+
+## What a repeat should change
+
+In priority order:
+
+1. **Strip condition disclosure from responses before evaluation.** Mechanical fix, removes the
+   largest defect in the v2 quality result.
+2. **Preserve per-run quality scores.** v2's aggregates cannot be recomputed from any artifact.
+3. **Five runs per cell**, as originally specified.
+4. **Independently authored scenarios.**
+5. **A second model family** — though that is properly
+   [experiment 02](02-cross-model.md).

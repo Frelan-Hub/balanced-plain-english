@@ -18,7 +18,11 @@ clean, portable, paste-anywhere document with no repository metadata in it.
 | 1.0.0 | Initial standard | — |
 | 1.1.0 | Added **Completeness before concision** and **Technical nuance**; extended the quality check from 7 items to 9 | The first stress-test cycle exposed a recurring completeness weakness and a risk that plain language would be read as permission to simplify away engineering detail |
 
-Version 1.1.0 is the version all evidence in this repository was collected against.
+Version 1.1.0 is the version all evidence in this repository was collected against — both the v1
+qualitative validation and the [v2 token efficiency benchmark](../evidence/claude/benchmark-v2/README.md).
+
+The standard was **not modified** for or during the v2 benchmark. Keeping it fixed is what makes the
+two evidence sets comparable.
 
 ## Frozen
 

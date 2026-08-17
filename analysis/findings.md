@@ -1,8 +1,11 @@
 # Findings
 
-Interpretation of [evidence/claude/results.md](../evidence/claude/results.md). Every claim here
-should be traceable to that record. Confidence qualifiers are attached because they belong to the
-claims, not to a disclaimer at the end.
+Interpretation of [evidence/claude/results.md](../evidence/claude/results.md) (v1) and
+[evidence/claude/benchmark-v2/](../evidence/claude/benchmark-v2/README.md) (v2). Every claim here
+should be traceable to one of those records. Confidence qualifiers are attached because they belong
+to the claims, not to a disclaimer at the end.
+
+Findings 1–7 are from v1 and are unchanged. Findings 8–10 are from v2.
 
 ## Finding 1 — Communication overhead decreased; substance did not
 
@@ -156,17 +159,88 @@ reasoning, which is a design failure regardless of whether the influence looked 
 
 That is exactly the architectural behavior the layer separation predicts.
 
-## What follows from all seven
+## Finding 8 — The overhead reduction is large and measurable
 
-**Verdict: keep the standard, freeze it, and collect quantitative evidence next.**
+**Confidence: high, for the tested model and task set. Basis: 20 paired comparisons, telemetry.**
 
-The evidence supports continued use as a communication standard. It does not support a performance
-claim, and it does not yet distinguish a small real effect from no effect.
+Enabling the standard reduced output tokens by **50.45% in aggregate** across 20 paired scenarios on
+Claude Opus 5. Median per-run reduction 54.83%; 19 of 20 runs positive; range −3.38% to +72.28%.
+
+Three properties make this the strongest evidence in the repository:
+
+1. **It is telemetry, not judgment.** Output-token counts cannot be influenced by rater expectation —
+   the weakness that limits every other finding here.
+2. **It is independently recomputable.** [`verify.py`](../evidence/claude/benchmark-v2/verify.py)
+   reproduces every published figure from raw telemetry.
+3. **It is robust to the extraction rule.** An independent recount using a broader rule gives 49.31%
+   against the published 50.45%, with the same 19/20 positive runs.
+
+The effect is large enough that noise is an implausible explanation for its *direction*. It is not
+grounds for precision in the number: one run per cell, one model, one author-written task set.
+
+**Counter-evidence, retained:** BPE-014 regressed (−3.38%). Its OFF baseline (5,613 tokens) is a
+statistical outlier below the lower Tukey fence, and that scenario required an OFF rerun. An
+atypically short baseline is a plausible reason a percentage went slightly negative — an observation
+about the data, not grounds to exclude the run. It is included in every published figure.
+
+## Finding 9 — No material quality cost was detected, on a weak instrument
+
+**Confidence: low to moderate. Basis: 20 pairs, unblinded model-based rubric, per-run scores lost.**
+
+All 40 responses completed the task. No pair differed by more than one rubric point. Averages: OFF
+9.70, ON 9.50 out of 10.
+
+The direction slightly favours OFF. That is worth stating rather than rounding away: the measured
+0.20-point gap is small and was judged non-material, but it is not zero and it does not favour the
+standard.
+
+Two defects limit how much this finding can carry, and both are serious:
+
+1. **Blinding did not hold.** The condition appears in the response text of all 20 pairs — 12/20 in
+   both responses. The evaluation is unblinded in every pair, not most.
+2. **Per-run scores were not preserved.** Unlike the token figures, these cannot be recomputed from
+   any artifact.
+
+The defensible statement is narrow: *no material quality difference was detected*. Not that quality
+was equal, and not that the evaluation was blind.
+
+This is the weakest link in the v2 evidence chain, and it is the link the token result depends on. A
+50% token reduction only means something if quality held. The token measurement is strong; the
+evidence that quality held is not.
+
+## Finding 10 — The effect extends beyond v1's single domain
+
+**Confidence: moderate. Basis: 20 domains, one scenario each.**
+
+v1 was entirely Python backend engineering, and its narrowness was recorded as a limitation. v2 spans
+software and AI architecture, BIM and interior design operations, security, requirements engineering,
+governance, incident response, strategic planning, and twelve others. The reduction appears across
+them.
+
+This widens the claim's domain coverage. It does not deepen it: one scenario per domain cannot
+characterize any domain, and reduction was uneven — 17.58% on requirements engineering and 19.78% on
+privacy/local AI against 72.28% on document intelligence. The benchmark is not large enough to
+explain that spread.
+
+## What follows from all ten
+
+**Verdict: keep the standard, keep it frozen, and fix the quality instrument next.**
+
+The evidence now supports a measured efficiency claim, scoped to one model and one task set. It still
+does not support a cost claim, a latency claim, a cross-model claim, or a claim of quality
+equivalence.
 
 The next evidence should be, in order of value:
 
-1. Token counts — [experiments/01](../experiments/01-token-efficiency.md)
-2. A model family with a more verbose baseline — [experiments/02](../experiments/02-cross-model.md)
-3. Conversation-level turn counts — [experiments/03](../experiments/03-conversation-efficiency.md)
+1. **A second model family** — [experiments/02](../experiments/02-cross-model.md). Everything
+   measured is Claude. This is now the largest gap.
+2. **A genuinely blind quality evaluation with per-run scores preserved.** v2's token measurement is
+   strong and its quality gate is weak; the pairing is unbalanced.
+3. **Independently authored scenarios**, to test whether the effect survives a task set the standard's
+   author did not write.
+4. **Conversation-level turn counts** —
+   [experiments/03](../experiments/03-conversation-efficiency.md).
 
-Adding rules to the standard is not on that list, and that is deliberate.
+Adding rules to the standard is still not on that list, and that is still deliberate. A large
+measured result is not a reason to start editing the thing that was measured — it is a reason to keep
+it fixed so later evidence remains comparable.

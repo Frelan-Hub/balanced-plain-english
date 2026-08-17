@@ -1,0 +1,53 @@
+{
+  "evaluation": "Balanced Plain English Benchmark v2 — A/B quality evaluation",
+  "scope": "aggregate only",
+  "per_run_scores_preserved": false,
+  "per_run_scores_note": "Per-run rubric scores were not written to disk. Only the aggregate figures below were reported by the evaluation. They cannot be independently recomputed from the preserved artifacts, unlike the token figures.",
+  "evaluator": "model-based",
+  "blinding": {
+    "intended": true,
+    "held": false,
+    "ab_order_randomised": true,
+    "condition_disclosed_in_response_text": "20/20 pairs",
+    "condition_disclosed_in_both_responses": "12/20 pairs",
+    "detail": "Each benchmark run was told its own condition and echoed it into its response header, e.g. 'Condition: OFF (Balanced Plain English disabled)'. The A/B labels were anonymised and the A/B ordering was randomised, but the condition remained recoverable from the response body in every pair."
+  },
+  "rubric": {
+    "max_total": 10,
+    "dimensions": [
+      { "name": "Correctness", "range": "0-2" },
+      { "name": "Requirement Coverage", "range": "0-2" },
+      { "name": "Constraint Adherence", "range": "0-2" },
+      { "name": "Useful Specificity", "range": "0-2" },
+      { "name": "Efficiency / Unnecessary Verbosity", "range": "0-2" }
+    ],
+    "task_completion_scale": ["PASS", "PARTIAL", "FAIL"]
+  },
+  "results": {
+    "pairs_evaluated": 20,
+    "off_average": 9.7,
+    "on_average": 9.5,
+    "off_median": 10,
+    "on_median": 9.5,
+    "ties": 4,
+    "off_wins": 10,
+    "on_wins": 6,
+    "material_quality_differences": 0,
+    "max_observed_gap_points": 1,
+    "task_completion": {
+      "off": "20/20 PASS",
+      "on": "20/20 PASS",
+      "partial": 0,
+      "fail": 0
+    }
+  },
+  "reconciliation_note": "The brief originally recorded the win split as OFF 6 / ON 10. That contradicts the reported averages and medians: with 16 non-tied pairs each differing by exactly 1 point, an OFF average of 9.70 against an ON average of 9.50 requires OFF 10 / ON 6. The medians (OFF 10, ON 9.5) independently point the same way. The win counts were corrected to OFF 10 / ON 6 by the benchmark author. Recorded here because the correction is not derivable from any preserved artifact.",
+  "supported_claim": "The A/B quality evaluation detected no material quality difference across the 20 paired tests. Every non-tied difference was a single rubric point, and all 40 responses completed the task.",
+  "unsupported_claims": [
+    "identical quality",
+    "quality proven equal",
+    "statistically significant quality difference",
+    "human-rated quality",
+    "blind evaluation"
+  ]
+}

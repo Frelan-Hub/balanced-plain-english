@@ -1,4 +1,8 @@
-# Methodology
+# Methodology — v1 Qualitative Validation
+
+> Scope note: this document describes the **v1 qualitative validation** (8 scenarios, no token
+> counts). The v2 token efficiency benchmark has its own design and measurement section — see
+> [claude/benchmark-v2/README.md](claude/benchmark-v2/README.md). This file is preserved as written.
 
 ## Design
 
@@ -100,11 +104,16 @@ Stated here rather than buried, because they determine how much weight the resul
 | Small scenario count (8), single domain (Python engineering) | No basis for generalization |
 | One run per condition per scenario | Model output variance is not separated from treatment effect |
 | Not all scenarios have paired ON/OFF Claude responses | Three of eight support a genuine comparison |
-| No token counts collected | No quantitative efficiency claim is possible |
+| No token counts collected | No quantitative efficiency claim is possible **from v1** |
 | Single model family | Cross-model portability is untested |
 
-Consequence: the results are **controlled qualitative evidence**, not a benchmark. See
+Consequence: the v1 results are **controlled qualitative evidence**, not a benchmark. See
 [analysis/limitations.md](../analysis/limitations.md).
+
+Of these weaknesses, the v2 benchmark addresses the token-count gap and the scenario count and
+domain breadth. It does **not** address unblinded evaluation — v2's quality evaluation was intended
+to be blind and [was not](claude/benchmark-v2/README.md#blinding-did-not-hold) — nor single runs per
+cell, nor the single model family.
 
 ## Reproducing or extending this
 

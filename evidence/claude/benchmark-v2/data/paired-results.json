@@ -1,0 +1,241 @@
+{
+  "benchmark": "Balanced Plain English Token Efficiency Benchmark v2",
+  "standard_version": "1.1.0",
+  "model": "claude-opus-5",
+  "measurement": "output tokens only, from Claude Code JSONL session telemetry",
+  "summary": {
+    "runs": 20,
+    "executions": 40,
+    "total_off": 285757,
+    "total_on": 141604,
+    "tokens_saved": 144153,
+    "aggregate_reduction_pct": 50.45,
+    "mean_reduction_pct": 47.81,
+    "median_reduction_pct": 54.83,
+    "positive_reductions": 19,
+    "min_reduction_pct": -3.38,
+    "max_reduction_pct": 72.28
+  },
+  "runs": [
+    {
+      "run_id": "BPE-001",
+      "domain": "software architecture",
+      "model": "claude-opus-5",
+      "off_output_tokens": 15997,
+      "on_output_tokens": 9045,
+      "tokens_saved": 6952,
+      "reduction_pct": 43.46,
+      "off_session": "934c04bf-b695-483d-808c-f0b0efe2daa2.jsonl",
+      "on_session": "1869d8ee-1b08-4bb2-8f0b-2a9f16ec3e9a.jsonl"
+    },
+    {
+      "run_id": "BPE-002",
+      "domain": "AI system architecture",
+      "model": "claude-opus-5",
+      "off_output_tokens": 15490,
+      "on_output_tokens": 6641,
+      "tokens_saved": 8849,
+      "reduction_pct": 57.13,
+      "off_session": "f5517e54-cf94-44c2-9964-58784888798a.jsonl",
+      "on_session": "71269bc5-a888-40fa-aea1-652aa977b85e.jsonl"
+    },
+    {
+      "run_id": "BPE-003",
+      "domain": "architecture and BIM operations",
+      "model": "claude-opus-5",
+      "off_output_tokens": 11703,
+      "on_output_tokens": 7012,
+      "tokens_saved": 4691,
+      "reduction_pct": 40.08,
+      "off_session": "62fc3072-f515-4ee2-be8c-1e2d6a5d443f.jsonl",
+      "on_session": "947bd55d-9bc2-4520-ab31-553cc07a6d51.jsonl"
+    },
+    {
+      "run_id": "BPE-004",
+      "domain": "interior design operations",
+      "model": "claude-opus-5",
+      "off_output_tokens": 12440,
+      "on_output_tokens": 5352,
+      "tokens_saved": 7088,
+      "reduction_pct": 56.98,
+      "off_session": "0f7225cb-4e89-46d2-b369-ca42caec2d26.jsonl",
+      "on_session": "d3e46923-81c9-45fb-a32a-721362e1e07d.jsonl"
+    },
+    {
+      "run_id": "BPE-005",
+      "domain": "AI evaluation",
+      "model": "claude-opus-5",
+      "off_output_tokens": 12771,
+      "on_output_tokens": 8127,
+      "tokens_saved": 4644,
+      "reduction_pct": 36.36,
+      "off_session": "0423b2b1-ca5c-4ba7-87b9-ca080756ff61.jsonl",
+      "on_session": "f6956be7-2793-425e-8602-6dde7ef936dd.jsonl"
+    },
+    {
+      "run_id": "BPE-006",
+      "domain": "security architecture",
+      "model": "claude-opus-5",
+      "off_output_tokens": 17349,
+      "on_output_tokens": 5630,
+      "tokens_saved": 11719,
+      "reduction_pct": 67.55,
+      "off_session": "8d900ad7-8ad3-432b-979e-cfeced9e6aa4.jsonl",
+      "on_session": "572c6100-9693-40ac-87b7-919ca958dcc8.jsonl"
+    },
+    {
+      "run_id": "BPE-007",
+      "domain": "complex code analysis",
+      "model": "claude-opus-5",
+      "off_output_tokens": 13186,
+      "on_output_tokens": 5680,
+      "tokens_saved": 7506,
+      "reduction_pct": 56.92,
+      "off_session": "ddfa1854-3cb5-446c-87d1-96878ac5c65e.jsonl",
+      "on_session": "28c4cdd6-41be-4d06-bc20-bb59035c0cee.jsonl"
+    },
+    {
+      "run_id": "BPE-008",
+      "domain": "requirements engineering",
+      "model": "claude-opus-5",
+      "off_output_tokens": 15156,
+      "on_output_tokens": 12492,
+      "tokens_saved": 2664,
+      "reduction_pct": 17.58,
+      "off_session": "f965e169-d37a-4bdf-8d6b-61283e09a73b.jsonl",
+      "on_session": "a5c1287c-e6db-4623-b05a-0ef59669496c.jsonl"
+    },
+    {
+      "run_id": "BPE-009",
+      "domain": "decision analysis",
+      "model": "claude-opus-5",
+      "off_output_tokens": 14991,
+      "on_output_tokens": 5543,
+      "tokens_saved": 9448,
+      "reduction_pct": 63.02,
+      "off_session": "18c838c9-178f-49b1-8d14-84b3ca9dbc09.jsonl",
+      "on_session": "ac3618c4-be67-40c0-950a-440ebdb89809.jsonl"
+    },
+    {
+      "run_id": "BPE-010",
+      "domain": "multi-agent orchestration",
+      "model": "claude-opus-5",
+      "off_output_tokens": 17296,
+      "on_output_tokens": 8126,
+      "tokens_saved": 9170,
+      "reduction_pct": 53.02,
+      "off_session": "3f7ddbca-c722-471f-a4b6-61338282b7b0.jsonl",
+      "on_session": "7c78254a-b626-4ce6-9464-9768e8264fd8.jsonl"
+    },
+    {
+      "run_id": "BPE-011",
+      "domain": "knowledge management",
+      "model": "claude-opus-5",
+      "off_output_tokens": 13194,
+      "on_output_tokens": 5699,
+      "tokens_saved": 7495,
+      "reduction_pct": 56.81,
+      "off_session": "0c9bac1d-41cf-42d3-bc14-4ae3b80f3e5a.jsonl",
+      "on_session": "0322935a-5f72-4846-ad96-cfa92c94e980.jsonl"
+    },
+    {
+      "run_id": "BPE-012",
+      "domain": "document intelligence",
+      "model": "claude-opus-5",
+      "off_output_tokens": 18704,
+      "on_output_tokens": 5184,
+      "tokens_saved": 13520,
+      "reduction_pct": 72.28,
+      "off_session": "bc585c62-4851-4af4-bd1b-049d6f41b6f7.jsonl",
+      "on_session": "ba515a40-194d-469f-b60a-d9f87b8c1e05.jsonl"
+    },
+    {
+      "run_id": "BPE-013",
+      "domain": "AI governance",
+      "model": "claude-opus-5",
+      "off_output_tokens": 17183,
+      "on_output_tokens": 7317,
+      "tokens_saved": 9866,
+      "reduction_pct": 57.42,
+      "off_session": "a8a79dcb-edfd-4dd5-a392-8bc85dcf8cff.jsonl",
+      "on_session": "ea16b634-9301-4db4-b758-e52fc11a8196.jsonl"
+    },
+    {
+      "run_id": "BPE-014",
+      "domain": "workflow automation",
+      "model": "claude-opus-5",
+      "off_output_tokens": 5613,
+      "on_output_tokens": 5803,
+      "tokens_saved": -190,
+      "reduction_pct": -3.38,
+      "off_session": "e9f4f0f0-0748-48ce-aeb6-b64ec602ed45.jsonl",
+      "on_session": "fb52ffd2-637c-48a5-a586-f3295410f777.jsonl"
+    },
+    {
+      "run_id": "BPE-015",
+      "domain": "technical QA",
+      "model": "claude-opus-5",
+      "off_output_tokens": 14724,
+      "on_output_tokens": 7424,
+      "tokens_saved": 7300,
+      "reduction_pct": 49.58,
+      "off_session": "dd3cad8c-fd6e-4482-9dee-e07f2eece847.jsonl",
+      "on_session": "4210994a-d017-4aca-870a-dee77bce8dca.jsonl"
+    },
+    {
+      "run_id": "BPE-016",
+      "domain": "privacy and local AI",
+      "model": "claude-opus-5",
+      "off_output_tokens": 10480,
+      "on_output_tokens": 8407,
+      "tokens_saved": 2073,
+      "reduction_pct": 19.78,
+      "off_session": "8181725b-1d1a-4a7d-8396-d9b88270831b.jsonl",
+      "on_session": "17c260f6-bd3e-4920-a819-12fd353a311a.jsonl"
+    },
+    {
+      "run_id": "BPE-017",
+      "domain": "cost and efficiency",
+      "model": "claude-opus-5",
+      "off_output_tokens": 14210,
+      "on_output_tokens": 9497,
+      "tokens_saved": 4713,
+      "reduction_pct": 33.17,
+      "off_session": "d28667e2-18ef-4940-b822-8b314d3a623f.jsonl",
+      "on_session": "bb8b19a7-ab0e-4cd9-a5b6-5c911e6226e3.jsonl"
+    },
+    {
+      "run_id": "BPE-018",
+      "domain": "incident response",
+      "model": "claude-opus-5",
+      "off_output_tokens": 14794,
+      "on_output_tokens": 6896,
+      "tokens_saved": 7898,
+      "reduction_pct": 53.39,
+      "off_session": "d8598ba8-4fc3-44ba-89dc-2359166ca468.jsonl",
+      "on_session": "bcda3caa-1fb9-45e2-ab23-54a300526fd6.jsonl"
+    },
+    {
+      "run_id": "BPE-019",
+      "domain": "system design tradeoffs",
+      "model": "claude-opus-5",
+      "off_output_tokens": 12826,
+      "on_output_tokens": 4013,
+      "tokens_saved": 8813,
+      "reduction_pct": 68.71,
+      "off_session": "1c109c8a-d49b-4b77-85e5-c57b5ffd1631.jsonl",
+      "on_session": "0519925d-3cde-4454-ab37-6b7eb1fbd953.jsonl"
+    },
+    {
+      "run_id": "BPE-020",
+      "domain": "complex strategic planning",
+      "model": "claude-opus-5",
+      "off_output_tokens": 17650,
+      "on_output_tokens": 7716,
+      "tokens_saved": 9934,
+      "reduction_pct": 56.28,
+      "off_session": "b3a57825-8176-4cee-80d6-c8067d314f0c.jsonl",
+      "on_session": "0fecd025-6e71-4293-afb6-f29215d46aca.jsonl"
+    }
+  ]
+}

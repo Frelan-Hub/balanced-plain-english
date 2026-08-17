@@ -1,12 +1,16 @@
 # Future Experiments
 
-Protocols for evidence that does **not** exist yet. Nothing in this directory is a result.
+Pre-registered protocols. Results live in [`evidence/`](../evidence/), never here.
 
 | Experiment | Question | Status | Priority |
 |---|---|---|---|
-| [01 — Token efficiency](01-token-efficiency.md) | Does the standard reduce output tokens without reducing quality? | Not run | Highest |
-| [02 — Cross-model validation](02-cross-model.md) | Does it produce a comparable effect on a more verbose model? | Not run | High |
+| [01 — Token efficiency](01-token-efficiency.md) | Does the standard reduce output tokens without reducing quality? | **RUN** → [v2 benchmark](../evidence/claude/benchmark-v2/README.md) | — |
+| [02 — Cross-model validation](02-cross-model.md) | Does it produce a comparable effect on a more verbose model? | Not run | **Highest** |
 | [03 — Conversation efficiency](03-conversation-efficiency.md) | Does it reduce clarification and correction turns? | Not run | Medium |
+
+Experiment 01 is kept as a **pre-registration**: written before execution, preserved unedited, with
+the deviations between what it specified and what was delivered recorded at the bottom of it. That
+record is what makes the result auditable.
 
 ## Templates
 
@@ -17,17 +21,22 @@ Protocols for evidence that does **not** exist yet. Nothing in this directory is
 
 ## Why in this order
 
-**01 first** because it is the cheapest to run and closes the largest gap. Every efficiency statement
-in this repository is currently a design argument. Token counts are mechanically objective and would
-convert the weakest claims into either a supported result or a refuted one.
+**01 is done.** It was first because it was cheapest to run and closed the largest gap. It converted
+the repository's weakest claims — every efficiency statement was a design argument — into a measured
+result. It also produced a defect worth fixing: its quality evaluation was intended to be blind and
+was not.
 
-**02 second** because it is the only experiment that can distinguish a small real effect from no
-effect. Claude's baseline is already close to the target behavior, so additional Claude testing
-cannot resolve that ambiguity no matter how much of it is done.
+**02 is now the highest priority.** Everything measured so far is Claude. It is also the only
+experiment that can distinguish a real effect from a task-set artifact, by testing whether the
+reduction survives on a different model family.
 
-**03 last** because it has the highest potential value and the hardest measurement problem. It needs
-a fixed definition of "satisfactory outcome," a scripted or simulated user, and a metric that does
-not penalize the clarifying questions the standard prescribes.
+**03 remains last** because it has the highest potential value and the hardest measurement problem.
+It needs a fixed definition of "satisfactory outcome," a scripted or simulated user, and a metric
+that does not penalize the clarifying questions the standard prescribes.
+
+**A repeat of 01** is worth running before 03, with condition markers stripped from responses and
+per-run quality scores preserved. See
+[what a repeat should change](01-token-efficiency.md#what-a-repeat-should-change).
 
 ## Rules for any experiment added here
 

@@ -5,11 +5,14 @@
 > Does `balanced-plain-english.md` reduce unnecessary AI verbosity while preserving engineering
 > quality?
 
-**Status:** supported qualitatively for Claude, with two limits.
+**Status:** measured for Claude Opus 5, with scope limits.
 
-The observed effect is small, because Claude already exhibits much of the target behavior without
-the standard. And the evidence is unblinded single-rater judgment over a small scenario set, not a
-measured benchmark. Details in [analysis/limitations.md](../analysis/limitations.md).
+The [v2 benchmark](../evidence/claude/benchmark-v2/README.md) measured a **50.45% aggregate
+output-token reduction** across 20 paired scenarios, with no material quality difference detected and
+40/40 task completions. The verbosity half of the question is answered by telemetry; the quality half
+rests on an unblinded evaluation and is weaker. Scope: one model, one author-written task set, one
+run per cell, output tokens only. Details in
+[analysis/limitations.md](../analysis/limitations.md).
 
 ## Secondary questions
 
@@ -17,6 +20,7 @@ Status values used below:
 
 | Status | Meaning |
 |---|---|
+| **Measured** | Quantified from telemetry; scope-limited but not a judgment call |
 | **Supported (qualitative)** | Consistent with observed test behavior; unblinded, unmeasured |
 | **Mixed** | Some supporting evidence and some counter-evidence |
 | **Unmeasured** | Design hypothesis; no measurement collected |
@@ -25,46 +29,59 @@ Status values used below:
 | # | Question | Status | Basis |
 |---|---|---|---|
 | 1 | Does it improve clarity? | Supported (qualitative) | Incident-analysis scenario showed explicitly structured reasoning from evidence to action |
-| 2 | Does it improve useful information density? | Supported (qualitative) | Complex reasoning conveyed with less surrounding overhead; ratio not measured |
+| 2 | Does it improve useful information density? | Supported (qualitative), partly measured | v2: same task completed in 50.45% fewer output tokens with no material quality loss detected. The denominator is measured; the numerator is still judged |
 | 3 | Does it improve communication discipline? | Supported (qualitative) | Strongest and most repeated signal across scenarios |
 | 4 | Does it preserve technical precision? | Supported (qualitative) | No observed case of simpler-but-incorrect output |
 | 5 | Does it preserve technical nuance? | Supported (qualitative) | Edge cases, security reasoning, and technical distinctions retained under ON |
 | 6 | Does it preserve architecture restraint? | Supported (qualitative) | Unnecessary infrastructure rejected under ON in three scenarios |
-| 7 | Does it improve completeness before concision? | **Mixed** | Rule is explicit and directionally effective, but ON omitted requested output sections in one scenario |
-| 8 | Does it reduce unnecessary response tokens? | **Unmeasured** | No token counts collected. See [experiments/01](../experiments/01-token-efficiency.md) |
+| 7 | Does it improve completeness before concision? | **Mixed** | v1: ON omitted requested output sections in one scenario. v2: 40/40 task completions, no PARTIAL or FAIL |
+| 8 | Does it reduce unnecessary response tokens? | **Measured** | v2: 50.45% aggregate output-token reduction, 19/20 runs positive, median 54.83%. Output tokens only — not cost, not latency |
 | 9 | Does it reduce unnecessary follow-up turns? | **Unmeasured** | Not tested. See [experiments/03](../experiments/03-conversation-efficiency.md) |
 | 10 | Can it be used across different models? | By design; **validation pending** | Plain Markdown, no vendor syntax. Cross-model runs not yet captured. See [experiments/02](../experiments/02-cross-model.md) |
 | 11 | Can it operate globally? | By design | Installs as a global instruction file. See [deployment/global.md](../deployment/global.md) |
 | 12 | Can it operate selectively as a skill? | By design | Packaged as an on-demand skill. See [deployment/skill.md](../deployment/skill.md) |
 
-**Summary:** six supported qualitatively, one mixed, two unmeasured, three answered by design and
-deployment rather than by testing.
+**Summary:** one measured, five supported qualitatively, one mixed, one unmeasured, one answered by
+design with validation pending, and three answered by design and deployment rather than by testing.
 
 ## Notes on individual questions
 
 ### Q7 — completeness before concision
 
-This is the honest weak point, and it is deliberately not smoothed over.
+Still mixed, with evidence pulling in both directions.
 
-The rule works as a directional instruction: the ON responses consistently surfaced assumptions,
-ambiguities, and constraints rather than compressing them away. But in the comprehensive stress
-test, ON did not produce every explicitly requested output section.
+Against: in the v1 comprehensive stress test, ON did not produce every explicitly requested output
+section. For: in v2, all 40 responses — 20 of them ON — completed the task, with no response scored
+PARTIAL or FAIL.
 
-The correct conclusion is not that the rule failed. It is that a communication rule cannot
-guarantee execution completeness. See [03-scope-boundaries.md](03-scope-boundaries.md).
+The v2 result is reassuring but does not overturn the v1 one. v2 scored *task completion*, not
+whether every requested structural element was present, and its evaluation was unblinded.
 
-### Q8 and Q9 — token efficiency
+The conclusion is unchanged: a communication rule cannot guarantee execution completeness. See
+[03-scope-boundaries.md](03-scope-boundaries.md).
 
-The standard is *designed* to reduce unnecessary tokens: it targets repetition, restatement,
-redundant conclusions, unnecessary caveats, and explanation of obvious code. The design rationale is
-sound and the observed behavior is consistent with it.
+### Q8 — response tokens
 
-None of that is a measurement.
+**Measured.** The v2 benchmark found a 50.45% aggregate output-token reduction across 20 paired
+scenarios on Claude Opus 5, with 19/20 runs positive and a median per-run reduction of 54.83%.
 
-No claim of a percentage token reduction, cost reduction, or context-window saving is made anywhere
-in this repository. The working hypothesis of roughly 5–10% reduction in unnecessary output, carried
-over from the validation record, is labelled as an engineering estimate in
-[analysis/token-efficiency.md](../analysis/token-efficiency.md) and must not be cited as a result.
+Three qualifications travel with that number and must not be dropped:
+
+1. **Output tokens only.** Input telemetry is unusable (`input_tokens: 2` on every run) and cache
+   tokens were not analysed. This is not a cost claim, and not a latency claim.
+2. **One model, one author-written task set, one run per cell.** No statistical significance.
+3. **The quality gate was unblinded.** A token reduction only counts if quality held; the evidence
+   that it held is weaker than the evidence for the reduction itself.
+
+An earlier estimate in this repository put the reduction at 5–10%. It was wrong by roughly an order
+of magnitude and is retained, with both candidate explanations, in
+[analysis/token-efficiency.md](../analysis/token-efficiency.md).
+
+### Q9 — follow-up turns
+
+**Still unmeasured.** Every v2 execution was single-turn. Whether clearer first responses reduce
+clarification and correction turns is untested, and remains the weakest hypothesis in this
+repository. See [experiments/03](../experiments/03-conversation-efficiency.md).
 
 ### Q10 — cross-model use
 
@@ -77,6 +94,10 @@ exists, the answer is "portable by construction, unvalidated by evidence."
 
 One test in the initial suite captured responses from a non-Claude model. Those were deliberately
 excluded from the Claude results rather than presented as cross-model evidence.
+
+v2 did not change this. It measured a second Claude model, not a second model family, so it is now
+the **largest** open gap: every number in this repository comes from Claude. See
+[experiments/02](../experiments/02-cross-model.md).
 
 ### Q11 and Q12 — global and selective operation
 

@@ -1,4 +1,8 @@
-# Qualitative Scorecard
+# Qualitative Scorecard — v1
+
+> **Scope note.** This scorecard belongs to the **v1 qualitative validation**. It is preserved as
+> written. For measured figures, see the
+> [v2 token efficiency benchmark](benchmark-v2/README.md) — those are telemetry, these are not.
 
 > **Read this first.** The numbers below are a **subjective evaluation rubric**, not measurements.
 >

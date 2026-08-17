@@ -6,12 +6,16 @@ The most useful contribution is **evidence**, not rules.
 
 | Contribution | Value |
 |---|---|
-| Token counts for ON/OFF runs | Highest — closes the largest gap |
-| A controlled run against a non-Claude model | High — the only way to test the small-effect ambiguity |
-| A blinded second rating of the existing evidence | High — addresses the largest methodological weakness |
-| Additional scenarios in an untested domain | Useful — everything here is Python backend work |
+| A controlled run against a non-Claude model | **Highest** — every number here is Claude |
+| A genuinely blind quality evaluation, per-run scores preserved | **Highest** — v2's blinding did not hold in any pair |
+| Independently authored benchmark scenarios | High — the v2 task set was written by the standard's author |
+| Multiple runs per cell | High — v2 ran one; the protocol asked for five |
+| Total-cost or latency measurement | Useful — v2 measured output tokens only |
 | Null or negative results | As valuable as positive ones |
 | Corrections to claims that overstate the evidence | Always accepted |
+
+Token counts for ON/OFF runs were the top priority until the
+[v2 benchmark](evidence/claude/benchmark-v2/README.md) collected them.
 
 ## What is not wanted
 
@@ -54,10 +58,13 @@ the Claude record.
    defect, not a stronger conclusion.
 3. **Attach confidence to claims, not to a disclaimer at the end.**
 4. **Do not add a claim this repository explicitly forbids.** The list is in
-   [analysis/limitations.md](analysis/limitations.md#what-must-never-be-claimed): no measured token
-   reduction, no cost reduction, no context-window savings, no statistical significance, no
-   universality.
-5. **Keep the five sections separate** — canonical standard, evidence, analysis, deployment, future
+   [analysis/limitations.md](analysis/limitations.md#what-must-never-be-claimed): no cost reduction,
+   no latency claim, no context-window savings, no statistical significance, no claim that quality
+   was proven equal, no claim the v2 evaluation was blind, no universality.
+5. **Keep a measured claim attached to its scope.** The 50.45% figure belongs to one model, one
+   standard version, and one author-written task set. Restating it without that scope turns a result
+   into a slogan.
+6. **Keep the five sections separate** — canonical standard, evidence, analysis, deployment, future
    experiments. Mixing them is how an evidence repository turns into marketing.
 
 ## Reporting a problem with a claim
