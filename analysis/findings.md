@@ -187,8 +187,10 @@ about the data, not grounds to exclude the run. It is included in every publishe
 
 **Confidence: low to moderate. Basis: 20 pairs, unblinded model-based rubric, per-run scores lost.**
 
-All 40 responses completed the task. No pair differed by more than one rubric point. Averages: OFF
-9.70, ON 9.50 out of 10.
+All 40 responses completed the task. No pair was scored as a material quality difference by the
+evaluator's threshold. Averages: OFF 9.70, ON 9.50 out of 10. Head-to-head win counts were not
+preserved and are not recoverable from any artifact — see
+[benchmark report](../evidence/claude/benchmark-v2/README.md#two-integrity-notes-on-the-quality-data).
 
 The direction slightly favours OFF. That is worth stating rather than rounding away: the measured
 0.20-point gap is small and was judged non-material, but it is not zero and it does not favour the

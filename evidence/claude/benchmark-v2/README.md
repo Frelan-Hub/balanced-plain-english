@@ -207,14 +207,16 @@ expectation.
 |---|---:|---:|
 | Average score | 9.70 / 10 | 9.50 / 10 |
 | Median score | 10 / 10 | 9.5 / 10 |
-| Head-to-head wins | 10 | 6 |
+| Head-to-head wins | not recoverable | not recoverable |
 | Ties | 4 | 4 |
 | Task completion | 20/20 PASS | 20/20 PASS |
 | PARTIAL or FAIL | 0 | 0 |
 | Material quality differences | 0 / 20 | 0 / 20 |
 
-The 0.20-point average difference favours OFF. It was judged non-material: every non-tied difference
-was a single rubric point, and no response was partially completed or failed.
+The 0.20-point average difference favours OFF. It was judged non-material: no pair was scored as a
+material quality difference by the evaluator's threshold, and no response was partially completed or
+failed. The per-pair gap sizes behind that threshold were not preserved, so "every non-tied difference
+was a single rubric point" cannot be asserted as fact (see below).
 
 ### The supported wording
 
@@ -234,11 +236,18 @@ Not supported, and used nowhere in this repository:
 quality figures **cannot be independently recomputed** from the preserved artifacts. They are
 recorded on the benchmark author's word.
 
-**The win counts were corrected.** The brief originally recorded OFF 6 / ON 10. That contradicts the
-reported averages and medians: with 16 non-tied pairs each differing by exactly one point, an OFF
-average of 9.70 against 9.50 requires OFF 10 / ON 6, and the medians point the same way. The author
-confirmed the averages and medians were correct and the win split was transposed. The correction is
-recorded because it is not derivable from any preserved artifact.
+**Head-to-head win counts are not recoverable.** No preserved artifact — including the original
+benchmark brief — records a win count in either direction; the brief reports only averages, medians,
+ties, and the material-difference count. A prior version of this report published an arithmetic-derived
+split (OFF 10 / ON 6), on the reasoning that the averages and medians "require" that split if every
+non-tied pair differed by exactly one rubric point. That single-point-gap assumption is not itself a
+preserved fact — "material quality differences: 0/20" shows every pair's gap stayed under the
+evaluator's materiality threshold, not that every non-tied gap was exactly one point. A different mix
+of gap sizes among the 16 non-tied pairs would produce a different split from the same averages. Because
+the derivation rests on an unverified assumption, win counts are reported here as **not recoverable**
+rather than republished under either labeling. The 20 anonymised A/B files that would settle this
+directly were not located among the evidence available for this audit; only the aggregate
+`quality-summary.json` survived.
 
 ## Interpretation
 
@@ -336,7 +345,7 @@ Claude Code JSONL session logs          40 sessions, one per execution
                 ├─ data/paired-results.csv    derived, machine-readable
                 └─ data/paired-results.json   derived, with summary block
 
-Quality evaluation inputs               20 anonymised A/B files
+Quality evaluation inputs               20 anonymised A/B files (not located — see below)
         └─ data/quality-summary.json    aggregate results only
 ```
 

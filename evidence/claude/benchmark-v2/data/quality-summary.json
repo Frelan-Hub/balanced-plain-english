@@ -30,10 +30,10 @@
     "off_median": 10,
     "on_median": 9.5,
     "ties": 4,
-    "off_wins": 10,
-    "on_wins": 6,
+    "off_wins": null,
+    "on_wins": null,
     "material_quality_differences": 0,
-    "max_observed_gap_points": 1,
+    "max_observed_gap_points": null,
     "task_completion": {
       "off": "20/20 PASS",
       "on": "20/20 PASS",
@@ -41,13 +41,16 @@
       "fail": 0
     }
   },
-  "reconciliation_note": "The brief originally recorded the win split as OFF 6 / ON 10. That contradicts the reported averages and medians: with 16 non-tied pairs each differing by exactly 1 point, an OFF average of 9.70 against an ON average of 9.50 requires OFF 10 / ON 6. The medians (OFF 10, ON 9.5) independently point the same way. The win counts were corrected to OFF 10 / ON 6 by the benchmark author. Recorded here because the correction is not derivable from any preserved artifact.",
-  "supported_claim": "The A/B quality evaluation detected no material quality difference across the 20 paired tests. Every non-tied difference was a single rubric point, and all 40 responses completed the task.",
+  "win_count_status": "not recoverable from preserved artifacts",
+  "reconciliation_note": "No preserved artifact — including the original benchmark brief (BPE_Token_Efficiency_Evidence_v2.md) — records a head-to-head win count in either direction. A prior version of this file published an arithmetic-derived split (OFF 10 / ON 6), reasoning that the averages and medians 'require' that split if every non-tied pair differed by exactly one rubric point. That single-point-gap assumption (previously recorded here as max_observed_gap_points: 1) is itself not a preserved fact: 'material_quality_differences: 0' only shows every pair's gap stayed under the evaluator's materiality threshold, not that every non-tied gap was exactly 1 point. Because the derivation depends on an unverified assumption, off_wins/on_wins have been withdrawn rather than republished under either labeling. The verified quality figures are the averages, medians, ties, material-difference count, and task completion above.",
+  "supported_claim": "The A/B quality evaluation detected no material quality difference across the 20 paired tests, and all 40 responses completed the task.",
   "unsupported_claims": [
     "identical quality",
     "quality proven equal",
     "statistically significant quality difference",
     "human-rated quality",
-    "blind evaluation"
+    "blind evaluation",
+    "head-to-head win counts in either direction",
+    "every non-tied difference was a single rubric point"
   ]
 }

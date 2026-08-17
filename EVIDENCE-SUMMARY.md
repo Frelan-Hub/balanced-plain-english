@@ -82,7 +82,7 @@ Three discrepancies were found during verification and are recorded rather than 
 | Finding | Resolution |
 |---|---|
 | Brief stated 18/20 positive reductions | Recomputation gives **19/20**; only BPE-014 is negative. Corrected |
-| Brief stated quality wins OFF 6 / ON 10 | Contradicts the averages and medians, which require OFF 10 / ON 6. Corrected by the author; not derivable from artifacts |
+| No artifact — including the brief — records quality head-to-head win counts | A prior version of this evidence set published an arithmetic-derived OFF 10 / ON 6 split; the single-point-gap assumption behind it is unverified, so win counts are now reported as **not recoverable** rather than published under either labeling |
 | Brief stated one rerun (BPE-014) | Telemetry shows **four** aborted OFF runs (BPE-011/012/013/014), all superseded in the paired dataset. Recorded |
 
 `raw/BPE_OFF_results_final.csv` still contains the four superseded rows. It is preserved unedited and

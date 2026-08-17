@@ -101,8 +101,8 @@ is not traceable to `evidence/` is a defect.
 40 executions, Claude Opus 5:
 
 - 50.45% aggregate output-token reduction; median per-run 54.83%; 19 of 20 runs positive.
-- No material quality difference detected. Every non-tied pair differed by one rubric point, and all
-  40 responses completed the task.
+- No material quality difference detected, and all 40 responses completed the task. Head-to-head win
+  counts were not preserved and are not recoverable from any artifact.
 - The reduction appears across 20 distinct domains, not just the Python backend work v1 covered.
 
 **Qualitative, from the [v1 validation](evidence/claude/results.md)** — 8 scenarios, 3 paired:
