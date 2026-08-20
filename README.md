@@ -176,7 +176,23 @@ report null and negative results — they are as useful here as positive ones.
 
 ---
 
-## License and attribution
+## Canonical status and license
 
-Licensed under [CC BY 4.0](LICENSE). Author: Julius Frelan Cabias — Frelan | Arch ID Design AI
-Visuals ([archidfrelanai.com](https://archidfrelanai.com)).
+Balanced Plain English is an open standard maintained by **FRELAN** (Julius Frelan Cabias —
+[archidfrelanai.com](https://archidfrelanai.com)). This repository is the canonical FRELAN
+repository for the Balanced Plain English standard.
+
+Licensed under [CC BY 4.0](LICENSE). You may use, adapt, reproduce, and redistribute the standard
+and this repository's material, including commercially, provided you give appropriate attribution.
+If you modify it, say so — see the [attribution notice](LICENSE) for suggested wording.
+
+Forks and independent adaptations are welcome. An adapted or modified version should identify
+itself as such, should not present itself as this canonical repository or as an official FRELAN
+release, and its use does not imply FRELAN's endorsement.
+
+**Attribution example:**
+
+```text
+Balanced Plain English by FRELAN, licensed under CC BY 4.0.
+https://github.com/Frelan-Hub/balanced-plain-english
+```
